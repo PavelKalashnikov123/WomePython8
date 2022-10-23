@@ -1,5 +1,5 @@
-import ModelModel
-import ViewView
+import Model
+import View
 
 
 def main_menu():
@@ -14,25 +14,25 @@ def main_menu():
         print("0. Выйти из программы")
         choice = int(input("Выберите пункт: "))
         match (choice):
-            1 1:
+            case 1:
                 add_contact()
                 print("\nКонтакт добавлен\n")
-            2 2:
+            case 2:
                 remove_contact()
                 print("\nКонтакт удален\n")
-            3 3:
+            case 3:
                 change_contact()
                 print("\nКонтакт изменен!\n")
-            4 4:
+            case 4:
                 search_contact()
                 print("\nКонтакт найден!\n")
-            5 5:
-                <span>show_contacts</span>()()
+            case 5:
+                show_contacts()
                 print("\nВсе Контакты!\n")
-            8 8:
+            case 8:
                 save_file()
                 print("\nФайл сохранен!\n")
-            0 0:
+            case 0:
                 break
 
 
@@ -50,7 +50,7 @@ def open_file():
 
 def save_file():
     with open(Model.path, "w", encoding="UTF-8") as data:
-        data.write(("\n".join(ModelModel.phonebook)))
+        data.write(("\n".join(Model.phonebook)))
 
 
 def add_contact():
@@ -58,7 +58,7 @@ def add_contact():
     surname = input("Введите фамилию: ")
     last_name = input("Введите отчество: ")
     phone = input("Введите телефон: ")
-    contact = f"{name}; {surname}; {last_name; {phone};\n"
+    contact = f"{name}; {surname}; {last_name}; {phone};\n"
     Model.phonebook.append(contact)
     View.printPhoneBook()
 
@@ -75,7 +75,7 @@ def change_contact():
     choice2 = int(input("Что изменяем (0-имя, 1-фамилия, 2-отчество, 3-телефон): "))
 
     contact = Model.phonebook.pop(choice).split(";")
-    print (contact)
+    print(contact)
     contact[choice2] = input("Введите новое значение: ")
     print(contact)
     Model.phonebook.insert(choice, ";".join(contact))
@@ -84,9 +84,9 @@ def change_contact():
 
 def search_contact():
     choice = input("Поиск контакта: ")
-    for i, item in enumerate (Model.phonebook):
-        if  choicein item:
-            print
+    for i, item in enumerate(Model.phonebook):
+        if choice in item:
+            print(i, item)
             
 def show_contacts():
     open_file()
